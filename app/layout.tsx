@@ -1,29 +1,27 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces } from 'next/font/google';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Jost, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
-// Display: Fraunces stands in for the licensed PP Editorial New.
-// Once the commercial woff2 is purchased, drop the files into
-// public/fonts/PPEditorialNew-Regular.woff2 etc. and replace this
-// block with a `next/font/local` import. The CSS variable below
-// is already referenced from tailwind.config.ts, so the swap is a
-// one-file change.
-const displayFont = Fraunces({
+// Primary font: Century Gothic (locally installed on macOS/Windows).
+// Jost is loaded from Google Fonts as a near-identical geometric-sans
+// fallback for Linux/Android/iOS devices where Century Gothic is not
+// present. Jost was designed explicitly as a free alternative to
+// Futura / Century Gothic, so the visual character is preserved.
+const fallbackSans = Jost({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-sans-fallback',
   display: 'swap',
 });
 
-// Sans + Mono: Vercel's Geist stands in for Söhne / Söhne Mono — same
-// neo-grotesque DNA and optical weight. The commercial Söhne replaces
-// either via `next/font/local` without any downstream code change
-// (tailwind.config.ts lists "Söhne" first).
-const sansFont = GeistSans;
-const monoFont = GeistMono;
+// Monospace for labels / meta. JetBrains Mono is a solid editorial
+// choice and reliable across platforms.
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 const SITE_URL = 'https://futurus.studio';
 
@@ -93,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable}`}
+      className={`${fallbackSans.variable} ${monoFont.variable}`}
     >
       <body>{children}</body>
     </html>

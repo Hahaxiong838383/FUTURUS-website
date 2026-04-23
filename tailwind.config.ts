@@ -29,31 +29,36 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // Display: commercial `PP Editorial New` wins if the local woff2 is
-        // dropped under public/fonts/. Otherwise the CSS variable from
-        // next/font/google (Fraunces) takes over — same editorial register.
+        // Century Gothic is present on macOS and Windows out of the box.
+        // Jost (loaded via next/font/google) is the universal fallback —
+        // it was designed explicitly as a free, metric-compatible
+        // alternative to Futura / Century Gothic. URW Gothic and ITC
+        // Avant Garde Gothic cover other systems.
         display: [
-          '"PP Editorial New"',
-          'var(--font-display)',
-          '"Fraunces"',
-          'ui-serif',
-          'Georgia',
-          'serif',
+          '"Century Gothic"',
+          '"ITC Avant Garde Gothic"',
+          '"URW Gothic"',
+          'var(--font-sans-fallback)',
+          '"Jost"',
+          '"Futura"',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
         ],
-        // Sans: commercial `Söhne` wins if present. Otherwise Geist
-        // (Söhne-family neo-grotesque) from next/font/google.
         sans: [
-          '"Söhne"',
-          'var(--font-sans)',
-          '"Geist"',
+          '"Century Gothic"',
+          '"ITC Avant Garde Gothic"',
+          '"URW Gothic"',
+          'var(--font-sans-fallback)',
+          '"Jost"',
+          '"Futura"',
           'ui-sans-serif',
           'system-ui',
           'sans-serif',
         ],
         mono: [
-          '"Söhne Mono"',
           'var(--font-mono)',
-          '"Geist Mono"',
+          '"JetBrains Mono"',
           'ui-monospace',
           'monospace',
         ],

@@ -5,17 +5,33 @@
 @layer base {
   :root {
     color-scheme: light;
+  }
 
-    /* Alias the Geist CSS variables (set by the geist font package) to our
-       --font-sans / --font-mono slots. When licensed Söhne woff2s replace
-       Geist via next/font/local, these variables keep the same names so
-       tailwind.config.ts and globals.css do not need to change. */
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+  /* Full-bleed baseline — guarantees the page fills every viewport size
+     without a horizontal scrollbar. `dvh` accounts for the mobile browser
+     chrome (Safari, Chrome on iOS/Android) collapsing and expanding. */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%; /* iOS Safari zoom-on-landscape guard */
+  }
+
+  /* Media defaults — ensures <video> and <img> never overflow their
+     containers at any viewport width. */
+  img,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
   }
 
   ::-webkit-scrollbar {
@@ -37,16 +53,13 @@
   body {
     background-color: #f5f1ec;
     color: #1a1a1a;
-    font-family: 'Söhne', var(--font-sans), 'Geist', ui-sans-serif,
+    font-family: 'Century Gothic', 'ITC Avant Garde Gothic', 'URW Gothic',
+      var(--font-sans-fallback), 'Jost', 'Futura', ui-sans-serif,
       system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     letter-spacing: 0.005em;
-  }
-
-  body {
-    overflow-x: hidden;
   }
 
   ::selection {
