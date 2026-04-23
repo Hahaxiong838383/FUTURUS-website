@@ -1,0 +1,16 @@
+Drop the licensed commercial webfonts into this directory:
+
+  public/fonts/PPEditorialNew-Regular.woff2
+  public/fonts/PPEditorialNew-Italic.woff2
+  public/fonts/Sohne-Buch.woff2
+  public/fonts/Sohne-Kraftig.woff2
+  public/fonts/SohneMono-Buch.woff2
+
+Then open app/layout.tsx and swap the `next/font/google` imports for
+`next/font/local`, pointing at the files above. That is the only code
+change needed — tailwind.config.ts already prefers the licensed family
+name first and falls back to the Google-hosted stand-in automatically.
+
+Purchase sources:
+  - PP Editorial New: https://pangrampangram.com/products/editorial-new
+  - Söhne:            https://klim.co.nz/retail-fonts/soehne/

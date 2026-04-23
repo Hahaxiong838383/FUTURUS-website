@@ -5,14 +5,19 @@
 @layer base {
   :root {
     color-scheme: light;
+
+    /* Alias the Geist CSS variables (set by the geist font package) to our
+       --font-sans / --font-mono slots. When licensed Söhne woff2s replace
+       Geist via next/font/local, these variables keep the same names so
+       tailwind.config.ts and globals.css do not need to change. */
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  /* Thin, unobtrusive scrollbar tinted to match the cream page bg. Keeps the
-     editorial feel intact on macOS and Chromium. */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -32,8 +37,8 @@
   body {
     background-color: #f5f1ec;
     color: #1a1a1a;
-    font-family: 'Century Gothic', 'ITC Avant Garde Gothic', 'URW Gothic',
-      'Jost', 'Futura', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Söhne', var(--font-sans), 'Geist', ui-sans-serif,
+      system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -64,7 +69,11 @@
   }
 
   .hero-hairline {
-    background-image: linear-gradient(to right, rgba(26, 26, 26, 0.18), rgba(26, 26, 26, 0));
+    background-image: linear-gradient(
+      to right,
+      rgba(26, 26, 26, 0.18),
+      rgba(26, 26, 26, 0)
+    );
     height: 1px;
   }
 }

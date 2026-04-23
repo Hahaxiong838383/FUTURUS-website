@@ -1,26 +1,30 @@
 {
   "name": "futurus-website",
   "private": true,
-  "version": "0.1.0",
-  "type": "module",
+  "version": "0.2.0",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 5180",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 5181"
+    "dev": "next dev --port 5180 --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --port 5181",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",
+    "geist": "^1.7.0",
+    "next": "^14.2.18",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.18",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2",
-    "vite": "^5.4.11"
+    "typescript": "^5.7.2"
   }
 }
